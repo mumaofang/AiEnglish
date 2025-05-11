@@ -1,8 +1,5 @@
 import Axios from './Axios';
-interface ApiResponseCommon {
-    success: boolean,
-    code: number
-}
+import moke from './moke.json'
 
 
 export async function getData(word: string, test: boolean = false) {

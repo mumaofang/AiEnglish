@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import viteCompression from 'vite-plugin-compression'
 import AutoImport from 'unplugin-auto-import/vite'
+import legacy from '@vitejs/plugin-legacy'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -15,7 +16,10 @@ export default defineConfig({
       imports: ['vue', 'vue-router', 'pinia'],
       dts: 'src/auto-imports.d.ts'
     }),
-    viteCompression()
+    viteCompression(),
+    legacy({
+      targets: ['defaults', 'not IE 11']
+    })
   ],
   resolve: {
     alias: {
@@ -46,6 +50,7 @@ export default defineConfig({
     }
   },
   // CSS 预处理器配置
+  base: '/AiEnglish/',
   css: {
     preprocessorOptions: {
       less: {
